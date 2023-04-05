@@ -1,38 +1,219 @@
-.App {
-  text-align: center;
+:root {
+  --gradient-bg: 90deg,
+    hsl(6deg 100% 80%) 0%,
+    hsl(2deg 100% 80%) 11%,
+    hsl(358deg 100% 79%) 22%,
+    hsl(354deg 100% 78%) 33%,
+    hsl(350deg 100% 76%) 44%,
+    hsl(347deg 100% 74%) 56%,
+    hsl(344deg 100% 72%) 67%,
+    hsl(341deg 100% 70%) 78%,
+    hsl(338deg 100% 68%) 89%,
+    hsl(335deg 100% 65%) 100%;
+  --pale-blue: hsl(229, 34%, 66%);
+  --dark-blue: hsl(228, 56%, 26%);
+  --very-dark-blue: hsl(229, 57%, 11%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  background-color: var(--very-dark-blue);
+  background-image: url(./assets/images/bg-desktop.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  height: 100vh;
+  color: var(--pale-blue);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  max-width: 1920px;
+  padding: 13% 15% 20%;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  margin: 0 auto;
+}
+
+.block {
+  display: block;
+}
+
+.box {
+  background-color: var(--dark-blue);
+  margin: 0 20px;
+}
+
+.left {
+  width: 40%;
+  height: 200px;
+  padding: 10px 20px 20px;
+  border-radius: 10px 100px 10px 10px;
+}
+
+.left-items {
+  display: flex;
+  padding: 15px;
+}
+
+.icon {
+  background-color: var(--very-dark-blue);
+  margin: 0 15px 0 0;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.icon img {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin: 5px auto;
+}
+
+.right {
+  position: relative;
+  width: 60%;
+  padding: 30px;
+  height: 150px;
+  margin-top: 45px;
+}
+
+.loader {
+  width: 100%;
+  background-color: var(--very-dark-blue);
+  border-radius: 50px;
+  border:2px solid var(--very-dark-blue);
+  outline: none;
+}
+
+.gradient {
+  position: relative;
+  width: 80%;
+  padding: 2px;
+  border-radius: 50px;
+  background-image: linear-gradient(var(--gradient-bg));
+}
+
+.dot {
+  position: relative;
+  left: 96%;
+  top: 0;
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.right-items {
+  margin: 10px 0;
+  color: var(--pale-blue);
+}
+
+.right-items b {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.chat {
+  position: absolute;
+  top: -50px;
+  right: 40px;
+  z-index: 1;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--very-dark-blue);
+  padding: 15px 30px;
+  background-color: #fff;
+  border-radius: 10px 10px 0 10px;
+}
+
+.chat::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -40px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid #fff;
+  border-left: 30px solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 10px solid transparent;
+  left: 81.5%;
+  z-index: -1;
+}
+
+.chat span {
+  font-size: 12px;
+  color: var(--pale-blue);
+}
+
+.content {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width:992px) {
+  body{
+    background-image: url(./assets/images/bg-mobile.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: initial;
   }
-  to {
-    transform: rotate(360deg);
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 20% 7%;
+  }
+  .wrapper {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 0;
+  }
+  .box {
+    margin: 20px 0;
+  }
+  .left {
+    width: 100%;
+    padding: 30px;
+  }
+  .left-items {
+    padding: 15px;
+  }
+  .right {
+    position: relative;
+    width: 100%;
+    padding: 25px;
+  }
+  .dot {
+    left: 90%;
+  }
+  .chat {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+  }
+  .chat span {
+    margin-left: 5px;
+  }
+  .chat::after{
+    display: none;
   }
 }
